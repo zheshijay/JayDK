@@ -80,7 +80,8 @@ public class MyBinarySearch {
 
 	public static void main(String[] args) {
 		int[] nums = {1,2,3,4,5,6,7,8,9};
-		System.out.println(MyBinarySearch.binarySearch(nums, 99));
+		System.out.println(MyBinarySearch.binarySearch(nums, 1
+				));
 		
 		int[] shiftedNums = {5,6,7,8,9,1,2,3,4};
 		System.out.println(MyBinarySearch.shiftedBinarySearch(nums, 99));
