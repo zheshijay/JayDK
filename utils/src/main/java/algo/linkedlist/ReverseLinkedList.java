@@ -2,10 +2,6 @@ package algo.linkedlist;
 
 import java.util.Stack;
 
-import linkedlist.ReverseLinkedListTest.ListNode;
-
-
-
 /**
  * 
  * Reverse a singly linked list.
@@ -15,10 +11,10 @@ import linkedlist.ReverseLinkedListTest.ListNode;
  */
 public class ReverseLinkedList {
 
-	static class ListNode {
+	static class Node {
 		int val;
-		ListNode next;
-		ListNode(int x) { val = x; }
+		Node next;
+		Node(int x) { val = x; }
 	}
 
 	/**
@@ -28,27 +24,27 @@ public class ReverseLinkedList {
 	 * @param head
 	 * @return
 	 */
-	public ListNode reversedList(ListNode head){
-		Stack<ListNode> stack = new Stack<ListNode>();
+	public Node reversedList(Node head){
+		Stack<Node> stack = new Stack<Node>();
 
-		ListNode p = head;
+		Node p = head;
 		while(p!=null){
 			System.out.println("push :" + p.val);
 			stack.push(p);
 			p=p.next;
 		}
 
-		ListNode reversedListNodeHead = stack.peek();
-		ListNode reversedListNodeList = stack.pop();
+		Node reversedNodeHead = stack.peek();
+		Node reversedNodeList = stack.pop();
 
 		while(!stack.isEmpty()){
 			System.out.println("adding :" + stack.peek().val);
-			reversedListNodeList.next = stack.pop();
-			reversedListNodeList = reversedListNodeList.next;
+			reversedNodeList.next = stack.pop();
+			reversedNodeList = reversedNodeList.next;
 		}
-		reversedListNodeList.next = null;
+		reversedNodeList.next = null;
 
-		return reversedListNodeHead;
+		return reversedNodeHead;
 	}
 
 
@@ -59,13 +55,13 @@ public class ReverseLinkedList {
 	 */
 
 	/* Function to reverse the linked list */
-	ListNode reverse(ListNode head) {
+	Node reverse(Node head) {
 
-		ListNode before = null;
-		ListNode tmp = head;
+		Node before = null;
+		Node tmp = head;
 
 		while (tmp != null) {
-			ListNode next = tmp.next;
+			Node next = tmp.next;
 
 			tmp.next = before;
 
@@ -81,13 +77,13 @@ public class ReverseLinkedList {
 	}
 
 
-	ListNode myrReverse(ListNode head) {
+	Node myrReverse(Node head) {
 
-		ListNode reversed = null;
-		ListNode pointer = head;
+		Node reversed = null;
+		Node pointer = head;
 
 		while(pointer!=null){
-			ListNode nextNode = pointer.next;   //get nextNode first, because we want to lost the connect point of next one
+			Node nextNode = pointer.next;   //get nextNode first, because we want to lost the connect point of next one
 
 			pointer.next = reversed;   //pointer (current node) link to previous reversed node
 			reversed = pointer;         // move reversed to point to the new reversed linkedlist head
@@ -98,59 +94,68 @@ public class ReverseLinkedList {
 		return head;
 	}
 
-	public void printList(ListNode ListNode ){
+	public void printList(Node Node ){
 
-		//		System.out.print("printList: " + ListNode.val);
+		//		System.out.print("printList: " + Node.val);
 		System.out.println();
-		while(ListNode!=null){
-			System.out.print(ListNode.val);
-			ListNode = ListNode.next;
+		while(Node!=null){
+			System.out.print(Node.val);
+			Node = Node.next;
 		}
 	}
 
 	
-	ListNode myReverse2(ListNode head) {
-		
-		ListNode pre = null, cur = head, next = null;
-
+	Node myReverse2(Node head) {
+		Node pre = null, cur = head, next = null;
 		while(cur!=null){
 			next = cur.next;  //save the address of next node
-			
 			cur.next = pre; //.point cur to pre
 			pre = cur;   //move pre to cur node
 			cur = next;   //move on to next round
 		}
-		
 		return pre;
-		
 	}
 
-
+	
+	
+	
+	public Node myReverseLinkedList(Node head) {
+		Node pre=null, cur=head, nextNode=null;
+	    while(cur!=null){
+	    	nextNode = cur.next;
+	    	cur.next = pre;
+	    	pre = cur;
+	    	cur = nextNode;
+	    }
+	    return pre;
+	}
+	
+	
 	public static void main(String[] args){
 		ReverseLinkedList test = new ReverseLinkedList();
 
-		ListNode ListNode1 = new ListNode(1);
-		ListNode ListNode2 = new ListNode(2);
-		ListNode ListNode3 = new ListNode(3);
-		ListNode ListNode4 = new ListNode(4);
-		ListNode ListNode5 = new ListNode(5);
+		Node Node1 = new Node(1);
+		Node Node2 = new Node(2);
+		Node Node3 = new Node(3);
+		Node Node4 = new Node(4);
+		Node Node5 = new Node(5);
 
 
-		ListNode1.next = ListNode2;
-		ListNode2.next = ListNode3;
-		ListNode3.next = ListNode4;
-		ListNode4.next = ListNode5;
-		//		ListNode5.next = null;
+		Node1.next = Node2;
+		Node2.next = Node3;
+		Node3.next = Node4;
+		Node4.next = Node5;
+		//		Node5.next = null;
 
 		System.out.println("-- before");
-		test.printList(ListNode1);
+		test.printList(Node1);
 
-		ListNode newListNodeList = test.myReverse2(ListNode1);
-
+		Node newNodeList = test.myReverse2(Node1);
+		System.out.println("");
 		System.out.println("-- after");
-		test.printList(newListNodeList);
+		test.printList(newNodeList);
 
-		//		test.printList(test.reversedList(ListNode1));		
+		//		test.printList(test.reversedList(Node1));		
 
 
 	}

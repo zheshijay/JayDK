@@ -48,7 +48,7 @@ public class ThreeSum {
 			 int target = -curNum;
 			 
 			 
-			 int leftP = i, rightP = nums.length-1;
+			 int leftP = i+1, rightP = nums.length-1;
 			 
 			 while(leftP < rightP){
 				 
