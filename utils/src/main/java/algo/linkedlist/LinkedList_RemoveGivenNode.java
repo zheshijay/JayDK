@@ -1,7 +1,8 @@
 package algo.linkedlist;
 
 import java.util.Hashtable;
-import crackingInterview.LinkedList_RemoveDuplicateNode;
+
+import algo.linkedlist.LinkedList_RemoveDupNode.Node;
 
 public class LinkedList_RemoveGivenNode {
 
@@ -19,45 +20,6 @@ public class LinkedList_RemoveGivenNode {
 		}
 	}
 
-	/**
-	 * 
-	 * @author ZShi
-	 * @param node
-	 */
-	static void deleteNode(Node target) {
-		target.data = target.next.data;
-		target.next = target.next.next;
-	}
-	
-	
-	/**
-	 * 
-	 * @author ZShi
-	 * @param node
-	 */
-	static void deleteNode(Node node, int target) {
-		
-		Node previous = node;
-		while(node!=null){
-			if(node.data == target){
-				System.out.println("found target");
-				 if(node.next!=null){
-						node.data = node.next.data;
-						node.next = node.next.next; 
-				 }else{
-					 previous.next = null;
-					 node = node.next;
-				 }
-				
-			}else{
-				System.out.println("move previous");
-				previous = node;
-				node = node.next;
-			}
-				
-		}
-	}
-
 	
 	/**
 	 * 
@@ -71,15 +33,9 @@ public class LinkedList_RemoveGivenNode {
 			
 			if(node.data == target){
 				System.out.println("found target, insert 9");
-				
 				Node node9 = new Node(9);
-				
 				node.next = node9;
-				
 				node9.next = node.next;
-				
-				
-				
 				node = node.next;
 //				node = node.next;
 				
@@ -90,37 +46,23 @@ public class LinkedList_RemoveGivenNode {
 		}
 	}
 	
+
+	public void removeNode(Node head, Node target){
+
+		Node dummy = new Node(0);
+		dummy.next = head;
+		head = dummy;
+
+		while(head.next!=null){
+			if(head.next.data == target.data){
+				System.out.println("remove " + target.data);
+				head.next = head.next.next;			//remove node
+			}else
+			head = head.next;
+		}
+
+	}
 	
-	/**
-	 * 
-	 * @author ZShi
-	 * @param node
-	 */
-	//	void deleteNode2(Node node, int target) {
-	//
-	//		// When node to be deleted is head node
-	//		if (node.data == target) {
-	//			if (node.next == null) {
-	//				System.out.println("There is only one node. The list "
-	//						+ "can't be made empty ");
-	//				return;
-	//			}
-	//
-	//			/* Copy the data of next node to head */
-	//			node.data = node.next.data;
-	//
-	//			// store address of next node
-	//			target = node.next;
-	//
-	//			// Remove the link of next node
-	//			node.next = node.next.next;
-	//
-	//			// free memory
-	//			System.gc();
-	//		}
-	//	}
-
-
 	public static void main(String[] args){
 		Node node1 = new Node(1);
 		Node node2 = new Node(2);

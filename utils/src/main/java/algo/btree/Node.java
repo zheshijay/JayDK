@@ -8,4 +8,8 @@ public class Node {
 				this.left = null;
 				this.right = null;
 			}
+			
+			public String toString(){
+				return val+"";
+			}
 }

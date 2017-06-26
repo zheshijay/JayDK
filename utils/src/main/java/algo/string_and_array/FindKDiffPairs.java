@@ -116,15 +116,7 @@ public class FindKDiffPairs {
 		    
 		    return count;
 		  }
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public static void main(String args[]){
 		FindKDiffPairs test = new FindKDiffPairs();
 

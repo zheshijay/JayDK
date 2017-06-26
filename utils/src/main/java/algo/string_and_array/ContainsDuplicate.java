@@ -13,10 +13,22 @@ public class ContainsDuplicate {
  * 
  */
 
+	
+	/*
+	 * 
+	 * maintatin a K elements set
+	 * 
+	 */
 	public static boolean containsNearbyDuplicate(int[] nums, int k) {
 		Set<Integer> set = new HashSet<Integer>();
+		
 		for(int i = 0; i < nums.length; i++){
-			if(i > k) set.remove(nums[i-k-1]);
+			if(i > k) {
+				System.out.println("removing :" + nums[i-k-1]);
+				set.remove(nums[i-k-1]);
+			}
+			
+			
 			if(!set.add(nums[i])) return true;
 		}
 		return false;
@@ -33,7 +45,7 @@ public class ContainsDuplicate {
 
 
 	public static void main(String args[]){
-		System.out.println(ContainsDuplicate.containsDuplicate(new int[]{0, 1, 2, 3, 4, 5}));
+		System.out.println(ContainsDuplicate.containsNearbyDuplicate(new int[]{0, 2, 2, 3, 4, 5},1));
 
 
 	}

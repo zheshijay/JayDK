@@ -1,7 +1,5 @@
 package algo.linkedlist;
 
-import corejava.datastructure.linkedlist.SumTwoList.ListNode;
-
 /*
  * 
  * Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
@@ -12,6 +10,12 @@ Example:
 
 Given 1->2->3->4->5->NULL,
 return 1->3->5->2->4->NULL.
+
+
+
+Solution:
+
+maintatin 2 list:  1->3->5->7->9...    and 2->4->6->8...    connect 2 list when reaches the end
  * 
  * 
  */
@@ -40,10 +44,10 @@ public class OddEvenList {
 	    ListNode p2 = head.next;
 	    ListNode connectNode = head.next;
 	 
-	    while(p1 != null && p2 != null){
-	            ListNode t = p2.next;
-	            if(t == null)
-	                break;
+	    while(p1.next != null && p2.next != null){
+//	            ListNode t = p2.next;
+//	            if(t == null)
+//	                break;
 	 
 	            p1.next = p2.next;
 	            p1 = p1.next;
@@ -57,32 +61,17 @@ public class OddEvenList {
 	    return result;
 	}
 	
-	public ListNode getEvenOddList(ListNode node){
-		 if (node == null) return null;
-		 
-		 ListNode addHead = null;
-		 ListNode evenHead = null;
-		
-		while(node!=null){
-			System.out.println("------------- processing : " + node.val);
-			ListNode newNode = new ListNode(node.val);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-			if(newNode.val % 2 !=0){
-				System.out.println("adding odd value: " + newNode.val);
-				newNode = oddList.next = ;
-				oddList = newNode;
-			}else{
-				System.out.println("adding even value: " + newNode.val);
-				evenList.next = newNode;
-				evenList = newNode;
-			}
-			node = node.next;
-		}
-		
-
-		return evenList;
-		
-	}
 	
 	
 	public static void main (String args[]) {
@@ -92,17 +81,18 @@ public class OddEvenList {
 		ListNode node3 = new ListNode(3);
 		ListNode node4 = new ListNode(4);
 		ListNode node5 = new ListNode(5);
+		ListNode node6 = new ListNode(6);
 
 
 		node1.next = node2;
 		node2.next = node3;
 		node3.next = node4;
 		node4.next = node5;
-		node5.next = null;
+		node5.next = node6;
 
 //		oddEvenList.printList(node1);
 		
-		ListNode res = oddEvenList.getEvenOddList(node1);
+		ListNode res = oddEvenList.oddEvenList(node1);
 		oddEvenList.printList(res);
 		
 	}

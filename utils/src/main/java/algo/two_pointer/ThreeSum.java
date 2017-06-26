@@ -9,9 +9,9 @@ public class ThreeSum {
 	 * @return : Find all unique triplets in the array which gives the sum of zero.
 	 */
 	public ArrayList<ArrayList<Integer>> threeSum(int[] numbers) {
-		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
 		if (numbers == null || numbers.length < 3) {
-			return result;
+			return res;
 		}
 		Arrays.sort(numbers);
 
@@ -36,7 +36,7 @@ public class ThreeSum {
 					tmp.add(numbers[i]);
 					tmp.add(numbers[left]);
 					tmp.add(numbers[right]);
-					result.add(tmp);
+					res.add(tmp);
 					left++;
 					right--;
 					
@@ -56,7 +56,7 @@ public class ThreeSum {
 
 			}
 		}
-		return result;
+		return res;
 	}
 	
 	

@@ -1,19 +1,17 @@
 package algo.linkedlist;
 
-import corejava.datastructure.linkedlist.leetcode.LinkedList_RemoveGivenNode.Node;
 
 /**
  * http://bangbingsyb.blogspot.com/2014/11/leetcode-intersection-of-two-linked.html
  * 
- * 思路�??
 
-找链表交界，很类似Linked List Cycle II那题，方法也是类似的双指针相遇法。分两步走：
+1. if two linkedlist has intersection, they must have the same end.
 
-1. 如何判断两链表是否相交？
-两链表相交则他们必然有共同的尾节点�?�所以遍历两两链表，找到各自的尾节点，如果tailA!=tailB则一定不相交，反之则相交�??
+ Steps:
+      (1) check if they has the same end value (ailA==tailB)
+      (2) if they has intersection, find the DIFF abs(lenA-lenB), let the longer one runs DIFF steps
+      (3) Then move 2 pointer same time and compare both value, return one of the Node when value are equal.
 
-2. 如何判断两链表相交的起始节点�??
-在第1步判断相交时可以顺带计算两链表的长度lenA和lenB。让长的链表的head先走abs(lenA-lenB)步，然后和短链表的head�??起走，直到两者相遇，即为要找的节点�??
  * @author ZShi
  *
  */
@@ -23,7 +21,6 @@ public class IntersectionLinkedList {
 		Node next;
 		Node(int x) { val = x; }
 	}
-
 
 	public Node getIntersectionNode(Node headA, Node headB) {
 		
@@ -83,8 +80,7 @@ public class IntersectionLinkedList {
 public static void main(String[] args){
 
 	IntersectionLinkedList test = new IntersectionLinkedList();
-
-
+	
 	Node node1 = new Node(1);
 	Node node2 = new Node(2);
 	Node node3 = new Node(3);
@@ -96,9 +92,6 @@ public static void main(String[] args){
 	Node nodeC = new Node(3);
 	Node nodeD = new Node(4);
 	Node nodeE = new Node(5);
-
-
-
 
 	node1.next = node2;
 	node2.next = node3;
