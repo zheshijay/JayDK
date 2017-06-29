@@ -17,11 +17,11 @@ public class Fibonacci {
 		Map<Integer, Long> map = new HashMap<>();
 		map.put(1, 1L);
 		map.put(2, 1L);
-		
+
 		return DPfibonacci(map, n);
 
 	}
-	
+
 	public Long DPfibonacci(Map<Integer, Long> map, int n){
 		if(n < 3) return 1L;
 
@@ -35,12 +35,22 @@ public class Fibonacci {
 	}
 
 
+	public int fibDP(int n) {
+		int fib[] = new int[n + 1];
+		fib[0] = 0;
+		fib[1] = 1;
+		for (int i = 2; i < n + 1; i++) {
+			fib[i] = fib[i - 1] + fib[i - 2];
+		}
+		return fib[n];
+	}
+
 	public static void main(String[] args){
 		Fibonacci test = new Fibonacci();
-		
+
 		System.out.println("DP fibnacci:");
 		System.out.println(test.runFibnacciUseDP(50));
-		
+
 		System.out.println("Regular fibnacci:");
 		System.out.println(test.getFibonacci(50));
 	}

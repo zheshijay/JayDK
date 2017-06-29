@@ -2,6 +2,8 @@ package algo.string_and_array;
 
 import java.util.Arrays;
 
+import algo.utils.PrintUtils;
+
 /**
  * 
 Rotate an array of n elements to the right by k steps.
@@ -110,6 +112,8 @@ Assuming we are given {1,2,3,4,5,6} and order 2. The basic idea is:
 		if(order > arr.length){
 			order = order %arr.length;
 		}
+		
+		System.out.println(" order:" + order);
 
 		//length of first part
 		int a = arr.length - order; 
@@ -132,48 +136,16 @@ Assuming we are given {1,2,3,4,5,6} and order 2. The basic idea is:
 			right--;
 		}	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	 /*Function to left rotate arr[] of size n by d*/
-    void leftRotate(int arr[], int d, int n) 
-    {
-        int i;
-        for (i = 0; i < d; i++)
-            leftRotatebyOne(arr, n);
-    }
- 
-    void leftRotatebyOne(int arr[], int n) 
-    {
-        int i, temp;
-        temp = arr[0];
-        for (i = 0; i < n - 1; i++)
-            arr[i] = arr[i + 1];
-        arr[i] = temp;
-    }
- 
-    /* utility function to print an array */
-    void printArray(int arr[], int size) 
-    {
-        int i;
-        for (i = 0; i < size; i++)
-            System.out.print(arr[i] + " ");
-    }
-    
-	
+
 
 	public static void main(String args[]){
 		RotateArray test = new RotateArray();
 
 		int[] nums = new int[]{1,2,3,4,5,6,7};
 
-		int[] rotated = test.rotate(nums, 3);
+		test.rotate_reversal(nums, 3);
+		
+		System.out.println(Arrays.toString(nums));
 
 		//		test.printArray(rotated);
 

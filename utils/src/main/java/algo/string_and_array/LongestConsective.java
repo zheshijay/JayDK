@@ -59,7 +59,7 @@ public class LongestConsective {public int longestConsecutive(int[] nums) {
 	  
 	  
 	  public static void main(String[] args) {
-	 Solution test = new Solution();
+		  LongestConsective test = new LongestConsective();
 	    int[] nums = new int[]{100, 4, 200, 1, 3, 2};
 	    // String[] strs = new String[]{"apple", "ape", "april"};
 	    System.out.println("result is: " + test.longestConsecutive(nums));

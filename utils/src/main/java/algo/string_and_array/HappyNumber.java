@@ -15,10 +15,10 @@ does not include 1. Those numbers for which this process ends in 1 are happy num
 
 Example: 19 is a happy number
 
-1Â² + 9Â² = 82
-8Â² + 2Â² = 68
-6Â² + 8Â² = 100
-1Â² + 0Â² + 0Â² = 1
+1² + 9² = 82
+8² + 2² = 68
+6² + 8² = 100
+1² + 0² + 0² = 1
  */
 public class HappyNumber {
 	//-------------Solution
@@ -54,6 +54,6 @@ public class HappyNumber {
 	public static void main(String args[]){
 		HappyNumber test = new HappyNumber();
 
-		System.out.println(test.isHappy(19));
+		System.out.println(test.isHappy(11));
 	}
 }

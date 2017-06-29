@@ -61,7 +61,7 @@ For "bbbbb" the longest substring is "b", with the length of 1.
 
 
 	public static void main(String args[]){
-		LengthOfLongestSubstring test = new LengthOfLongestSubstring();
+		LongestSubstringWithoutRepeating test = new LongestSubstringWithoutRepeating();
 		System.out.println(test.lengthOfLongestSubstring("abcdefg"));
 	}
 }

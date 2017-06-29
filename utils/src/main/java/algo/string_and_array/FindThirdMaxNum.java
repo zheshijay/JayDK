@@ -43,10 +43,10 @@ public class FindThirdMaxNum {
 		Integer max1 = null;
 		Integer max2 = null;
 		Integer max3 = null;
-		
+
 		for (Integer n : nums) {
 			if (n.equals(max1) || n.equals(max2) || n.equals(max3)) continue;
-		
+
 			if (max1 == null || n > max1) {
 				max3 = max2;
 				max2 = max1;
@@ -61,6 +61,38 @@ public class FindThirdMaxNum {
 		return max3 == null ? max1 : max3;   //If it does not exist, return the maximum number.
 
 	}
+
+
+
+
+
+
+
+
+	//	Input: [1, 3, 2, 4, 5]
+
+	public int myFindThirdMax(int[] nums){
+
+		Integer max1 = null, max2 = null, max3=null;
+
+
+		for( int i=0; i< nums.length; i++){
+			if(max1==null || nums[i]>max1 ){
+				max3=max2;
+				max2=max1;
+				max1=nums[i];
+			}else if(max1==null || nums[i]>nums[2]){
+				max3=max2;
+				max2=nums[i];
+			}else if(max3==null || nums[i] >nums[3]){
+				max3=nums[i];
+			}
+
+		}
+
+		return max3!=null?max3:max1;
+	}
+
 
 
 	public static void main(String args[]){

@@ -85,26 +85,45 @@ public class My_Tree_MyBinaryTreeTraversal3 {
 			}
 		}
 	}
-	
+
 	//resursion
 	private Node findLCA1(Node root,  Node node1, Node node2) {
-	  if( root==null ) return null;
-	  
-	  if(root.left == node1 || root.right == node2) return root;
+		if( root==null ) return null;
 
-	  Node leftLCA = findLCA1(root.left,  node1, node2);
-	  Node rightLCA = findLCA1(root.right,  node1, node2);
-	  
-	  System.out.println("leftLCA: " + leftLCA);
-	  System.out.println("rightLCA: " + rightLCA);
-	  
-	  
-	  if(leftLCA ==null && rightLCA==null) return null;
-	  if(leftLCA !=null && rightLCA!=null) return root;
-	  
-	  return leftLCA!=null?leftLCA:rightLCA;
+		if(root.left == node1 || root.right == node2) return root;
+
+		Node leftLCA = findLCA1(root.left,  node1, node2);
+		Node rightLCA = findLCA1(root.right,  node1, node2);
+
+		System.out.println("leftLCA: " + leftLCA);
+		System.out.println("rightLCA: " + rightLCA);
+
+
+		if(leftLCA ==null && rightLCA==null) return null;
+		if(leftLCA !=null && rightLCA!=null) return root;
+
+		return leftLCA!=null?leftLCA:rightLCA;
 	}
-	
+
+
+	 Node getMirror(Node node)
+	    {
+	        if (node == null)
+	            return node;
+	 
+	        /* do the subtrees */
+	        Node left = getMirror(node.left);
+	        Node right = getMirror(node.right);
+	 
+	        /* swap the left and right pointers */
+	        
+	        System.out.println(" swap: " + node.left + " - " + node.right );
+	        
+	        node.left = right;
+	        node.right = left;
+	        return node;
+	    }
+
 
 	/**
 	 * @param args
@@ -139,26 +158,32 @@ public class My_Tree_MyBinaryTreeTraversal3 {
 
 		Node root = node1;
 
-		System.out.println("---------- preOrder ----------");  
-		test.preOrder(root);
-
-
+//		System.out.println("---------- preOrder ----------");  
+//		test.preOrder(root);
+//
+//
+//		System.out.println();  
+//		System.out.println("---------- Pre-Order DFS ----------");  
+//		test.preOrder_dfs(root);
+//
+//		System.out.println();  
+//		System.out.println("---------- Level Order BFS ----------");  
+//		test.levelOrder_bfs(root);
+//
+//		System.out.println();  
+//		System.out.println("---------- Level Order BFS with lin break ----------");  
+//		test.levelOrder_bfs_with_line_break(root);
+//
+//		System.out.println();  
+//		System.out.println("---------- Find LCA ----------");  
+//		Node lca = test.findLCA1(root, node3, node6);
+//		System.out.println("LCA is: " + lca);  
+		
 		System.out.println();  
-		System.out.println("---------- Pre-Order DFS ----------");  
-		test.preOrder_dfs(root);
+		System.out.println("---------- Get mirror ----------");  
+		Node mirrorTree = test.getMirror(root);
+		test.levelOrder_bfs_with_line_break(mirrorTree);  
 
-		System.out.println();  
-		System.out.println("---------- Level Order BFS ----------");  
-		test.levelOrder_bfs(root);
-
-		System.out.println();  
-		System.out.println("---------- Level Order BFS with lin break ----------");  
-		test.levelOrder_bfs_with_line_break(root);
-
-		System.out.println();  
-		System.out.println("---------- FInd LCA ----------");  
-		Node lca = test.findLCA(root, node3, node6);
-		System.out.println("LCA is: " + lca);  
 
 		//
 		//		System.out.println();

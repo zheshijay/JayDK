@@ -17,15 +17,30 @@ public class LargestNumber {
 				return (b+a).compareTo(a+b);
 			}
 		});
+		System.out.println(Arrays.toString(arr));
+		
+		
 
 		StringBuilder sb = new StringBuilder();
 		for(String s: arr){
 			sb.append(s);
 		}
 
-		while(sb.charAt(0)=='0'&&sb.length()>1)
-			sb.deleteCharAt(0);
+		//remote leading zero
+//		while(sb.charAt(0)=='0'&&sb.length()>1)
+//			sb.deleteCharAt(0);
 
 		return sb.toString();
 	}
+	
+	public static void main(String[] args){
+		LargestNumber test = new LargestNumber();
+		
+		int[] a = new int[]{3, 30, 34, 5, 9};
+		
+		System.out.println(test.largestNumber(a));
+		
+	}
+	
+	
 }

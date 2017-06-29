@@ -23,14 +23,10 @@ public class AllSubSet {
 	}
 
 	//[123]  ->    [] [1] [12] [123] [13] [2] [23] [3]
-	
-	// 1. 递归的定义：在 Nums 中找到所有以 subset 开头的的集合，并放到 results (res)
 	private void getSubSet(char[] nums, List<List<Character>> res, List<Character> subset, int start){
 
-		 // 2. 递归的拆解
         // deep copy
         // results.add(subset);
-		
 //		System.out.println("adding" + subset);
 		res.add(new ArrayList<Character>(subset));
 
@@ -42,13 +38,71 @@ public class AllSubSet {
 			subset.remove(subset.size()-1);
 		}
 		
-		
 		return; //3. base case, recursion exist
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<List<Character>> myGetAllSubSet(char[] chars){
+		List<List<Character>> res = new ArrayList<>();
+		List<Character> subSet = new ArrayList<>();
+		
+		myGetSubSet(chars, res, subSet, 0);
+		
+		return res;
+
+	}
+	
+	
+	//1. Original char  2.res set 3.tmpSet  4.start index
+	public static void myGetSubSet(char[] chars, List<List<Character>> res, List<Character> subSet, int start ){
+		
+		res.add(new ArrayList<Character>(subSet));
+		
+		for( int i=start; i< chars.length; i++ ){
+			subSet.add(chars[i]);
+			myGetSubSet(chars, res, subSet, i+1);
+			subSet.remove(subSet.size()-1);
+		}
+		return;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public static void main(String[] args){
 		AllSubSet test = new AllSubSet();
-		List<List<Character>> res = test.subsets("abc".toCharArray());
+		List<List<Character>> res = test.myGetAllSubSet("abc".toCharArray());
 		System.out.println(res);
 	}
 }

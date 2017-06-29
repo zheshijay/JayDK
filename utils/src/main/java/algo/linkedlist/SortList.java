@@ -1,7 +1,5 @@
 package algo.linkedlist;
 
-import corejava.datastructure.linkedlist.leetcode.RemoveNodeFromLinkedList.ListNode;
-
 public class SortList {
 	
 	static class ListNode {

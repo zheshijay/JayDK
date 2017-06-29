@@ -7,10 +7,10 @@ public class RemoveNth {
 		System.out.println("new length: " + (array.length - array.length / n));
 		
 	    int[] newArray = new int[array.length - array.length / n];
-	    int j = 0;
+	    int index = 0;
 	    for (int i = 0; i < array.length; i++) {
 	        if ((i + 1) % n != 0) {
-	            newArray[j++] = array[i];
+	            newArray[index++] = array[i];
 	        }
 	    }
 	    return newArray;

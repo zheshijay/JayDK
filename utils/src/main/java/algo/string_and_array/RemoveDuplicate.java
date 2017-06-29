@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 
- 
+
 //sorted
 public class RemoveDuplicate {
 
@@ -12,7 +12,7 @@ public class RemoveDuplicate {
 
 		int length=A.length; 
 		if(length==0 || length==1) return A;
-		
+
 		int index=1; 
 		for(int j=1; j<length; j++) 
 		{
@@ -24,14 +24,14 @@ public class RemoveDuplicate {
 		}
 
 		int[] newArray = new int[index];
-		
+
 		newArray = Arrays.copyOf(A, index);
-		
+
 		return newArray; 
 
 	}
 
-
+	//unsorted
 	public int[] removeDuplicate(int[] nums) {
 		HashSet<Integer> set = new HashSet<Integer>();
 

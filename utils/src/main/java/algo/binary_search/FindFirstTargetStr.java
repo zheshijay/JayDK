@@ -59,18 +59,7 @@ public class FindFirstTargetStr {
 		return -1;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 

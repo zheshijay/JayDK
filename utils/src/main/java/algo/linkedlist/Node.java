@@ -3,9 +3,13 @@ package algo.linkedlist;
 
 public class Node {
 
-	int val;
-	Node next;
+	public int val;
+	public Node next;
 	Node(int x) { val = x; }
+	
+	public int getVal(){
+		return val;
+	}
 	
 	public String toString(){
 		return val+"";

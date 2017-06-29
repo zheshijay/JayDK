@@ -1,9 +1,5 @@
 package algo.string_and_array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class ThreeSumClosest {
 	
 	/*
@@ -65,7 +61,7 @@ The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 	
 	public static void main(String args[]){
 		ThreeSumClosest threeSumClosest = new ThreeSumClosest();
-		int res = threeSumClosest.findClosest(new int[]{1,2,3,4,5}, 122);
+		int res = threeSumClosest.findClosest(new int[]{1,2,3,4,5}, 7);
 			
 		System.out.println(res);
 
