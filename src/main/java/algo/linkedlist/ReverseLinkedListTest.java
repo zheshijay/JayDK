@@ -1,6 +1,5 @@
 package algo.linkedlist;
 
-import linkedlist.ReverseLinkedList.ListNode;
 
 public class ReverseLinkedListTest {
 
@@ -9,7 +8,7 @@ public class ReverseLinkedListTest {
 		int val;
 		ListNode next;
 		ListNode(int val){
-			this.val = val;
+			this.val = val; 
 			this.next = null;
 		}
 

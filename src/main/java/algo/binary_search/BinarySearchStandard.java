@@ -5,7 +5,7 @@ public class BinarySearchStandard {
 	public boolean binarySearch(int[] a, int k){
 		int start=0, end=a.length-1;
 		
-		while(start <= end){
+		while(start <= end){ 
 			System.out.println("start:"+start + " end:" + end);
 			int mid = (start+end)/2;
 			if(k > a[mid]) start = mid + 1;
@@ -35,7 +35,7 @@ public class BinarySearchStandard {
 		return -1;
 	}
 	
-	public boolean binarySearch2(int[] nums, int k){
+	public boolean binarySearch2(int[] a, int k){
 		int start=0, end=a.length-1;
 		while(start+1 < end){
 			System.out.println("start:"+start + " end:" + end);
@@ -45,7 +45,7 @@ public class BinarySearchStandard {
 			else end = mid;
 		}
 		
-		if(nums[start] == k || nums[end] == k) return true;
+		if(a[start] == k || a[end] == k) return true;
 		return false;
 	}
 	
@@ -57,7 +57,7 @@ public class BinarySearchStandard {
 		
 		BinarySearchStandard test = new BinarySearchStandard();
 		
-		System.out.println(test.myFindVal(a, k));
+//		System.out.println(test.myFindVal(a, k));
 		
 		
 	}

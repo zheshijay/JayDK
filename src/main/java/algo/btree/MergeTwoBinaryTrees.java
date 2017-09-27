@@ -1,12 +1,12 @@
 package algo.btree;
 
 public class MergeTwoBinaryTrees {
-	  public TreeNode merge(TreeNode t1, TreeNode t2) {
+	  public Node merge(Node t1, Node t2) {
 	        if(t1 == null && t2 == null) {
 	            return null;
 	        }
 	        
-	        TreeNode newNode = new TreeNode(-1);
+	        Node newNode = new Node(-1);
 	        if(t1 == null) {
 	            newNode.val = t2.val;
 	            newNode.left = merge(null, t2.left);

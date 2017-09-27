@@ -1,6 +1,5 @@
 package algo.string_and_array;
 
-import corejava.datastructure.string.other.CheckAllPalindrome;
 
 public class ReverseString {
 

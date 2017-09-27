@@ -7,89 +7,87 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
-
-import sun.misc.BASE64Encoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class SendHttpRequest {
 	private final String USER_AGENT = "Mozilla/5.0";
+
+	// HTTP GET request 
+	private void sendGet() throws Exception {
+		
+		String url = "http://www.google.com/search?q=jay";
+		
+		URL obj = new URL(url);
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+		// optional default is GET
+		con.setRequestMethod("GET");
+
+		//add request header
+		con.setRequestProperty("User-Agent", USER_AGENT);
+
+		int responseCode = con.getResponseCode();
+		System.out.println("\nSending 'GET' request to URL : " + url);
+		System.out.println("Response Code : " + responseCode);
+
+		BufferedReader in = new BufferedReader(
+				new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+
+		//print result
+		System.out.println(response.toString());
+
+	}
 	
-	// HTTP GET request
-		private void sendGet() throws Exception {
+	private void sendPost2(){
+		try {
 
-			String url = "http://www.google.com/search?q=jay";
+			URL url = new URL("http://localhost:8080/infoservice/api/v1/document/edcu/batchjob?ttl=1");
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(true);
+			conn.setRequestMethod("POST"); 
+			conn.setRequestProperty("Content-Type", "application/json");
 
-			URL obj = new URL(url);
-			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+			String payload = "[{\"acctNum\": 313202, \"stmtType\": \"statement\", \"docId\" : 100145086}]";
 
-			// optional default is GET
-			con.setRequestMethod("GET");
+			OutputStream os = conn.getOutputStream();
+			os.write(payload.getBytes());
+			os.flush();
 
-			//add request header
-			con.setRequestProperty("User-Agent", USER_AGENT);
-
-			int responseCode = con.getResponseCode();
-			System.out.println("\nSending 'GET' request to URL : " + url);
-			System.out.println("Response Code : " + responseCode);
-
-			BufferedReader in = new BufferedReader(
-			        new InputStreamReader(con.getInputStream()));
-			String inputLine;
-			StringBuffer response = new StringBuffer();
-
-			while ((inputLine = in.readLine()) != null) {
-				response.append(inputLine);
+			if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+				throw new RuntimeException("Failed : HTTP error code : "
+						+ conn.getResponseCode());
 			}
-			in.close();
 
-			//print result
-			System.out.println(response.toString());
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					(conn.getInputStream())));
+
+			String output;
+			System.out.println("Output from Server .... \n");
+			while ((output = br.readLine()) != null) {
+				System.out.println(output);
+			}
+			conn.disconnect();
+
+		} catch (MalformedURLException e) {
+
+			e.printStackTrace();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
 
 		}
-		
-		
-		private void sendPost2(){
-			try {
+	}
 
-		        URL url = new URL("http://localhost:8080/infoservice/api/v1/document/edcu/batchjob?ttl=1");
-		        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		        conn.setDoOutput(true);
-		        conn.setRequestMethod("POST");
-		        conn.setRequestProperty("Content-Type", "application/json");
-
-		        String payload = "[{\"acctNum\": 313202, \"stmtType\": \"statement\", \"docId\" : 100145086}]";
-
-		        OutputStream os = conn.getOutputStream();
-		        os.write(payload.getBytes());
-		        os.flush();
-
-		        if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-		            throw new RuntimeException("Failed : HTTP error code : "
-		                + conn.getResponseCode());
-		        }
-
-		        BufferedReader br = new BufferedReader(new InputStreamReader(
-		                (conn.getInputStream())));
-
-		        String output;
-		        System.out.println("Output from Server .... \n");
-		        while ((output = br.readLine()) != null) {
-		            System.out.println(output);
-		        }
-		        conn.disconnect();
-
-		      } catch (MalformedURLException e) {
-
-		        e.printStackTrace();
-
-		      } catch (IOException e) {
-
-		        e.printStackTrace();
-
-		     }
-		}
-	
 	public Integer puiCallback() {
 
 
@@ -98,7 +96,6 @@ public class SendHttpRequest {
 
 		try {
 
-			
 			URL url = new URL(callbackUrl);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -127,18 +124,69 @@ public class SendHttpRequest {
 			e.printStackTrace();
 		}
 
-//		return responseCode;
-		return 200;
+		//		return responseCode;
+		return 200; 
 	}
 
-	
+	private void sendBidRequest(){
+		try {
+
+			URL url = new URL("http://localhost:8080/bid_request/doubleclick");
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(true);
+			conn.setRequestMethod("POST"); 
+			conn.setRequestProperty("Content-Type", "application/octet-stream");
+
+			//file
+			Path path = Paths.get("/Users/jay/temp/protoc_test/sample_bidrequest.h");
+			
+//			Path path = Paths.get("/Users/jay/temp/protoc_test/2017_request_log");
+			byte[] byte_array_data = Files.readAllBytes(path);
+			
+			
+//			String payload = "[{\"acctNum\": 313202, \"stmtType\": \"statement\", \"docId\" : 100145086}]";
+			
+			OutputStream os = conn.getOutputStream();
+			os.write(byte_array_data);
+			os.flush();
+
+			if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+				throw new RuntimeException("Failed : HTTP error code : "
+						+ conn.getResponseCode());
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					(conn.getInputStream())));
+
+			String output;
+			System.out.println("Output from Server .... \n");
+			while ((output = br.readLine()) != null) {
+				System.out.println(output);
+			}
+			conn.disconnect();
+
+		} catch (MalformedURLException e) {
+
+			e.printStackTrace();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+	}
+
+
+
+
+
 	public static void main(String[] args){
 		SendHttpRequest test = new SendHttpRequest();
-//		test.puiCallback();
-		test.sendPost2();
-		
-		
+		//		test.puiCallback();
+		test.sendBidRequest();
+
+
 	}
-	
-	
+
+
 }

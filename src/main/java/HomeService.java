@@ -10,7 +10,7 @@ import java.util.List;
 * 
 * 
 * @author  Jay Shi
-* @version 1.0
+* @version 1.0 
 * @since   2017-05-12 
 */
 public class HomeService {
@@ -74,7 +74,7 @@ public class HomeService {
 		home3.setUnit("unit#3");
 		home3.setZip(98101);
 
-		List<Home> homes = new ArrayList<>();
+		List<Home> homes = new ArrayList();
 		homes.add(home1);
 		homes.add(home2);
 		homes.add(home3);

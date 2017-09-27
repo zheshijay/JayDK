@@ -16,7 +16,7 @@ public class Maze {
 		{3, 7, 8,  17,  14 },
 		{4, 0, 0,  0,   15 },
 		{5, 0, 0,  0,   99 },
-		{6, 0, 0,  0,    0 }};
+		{6, 0, 0,  0,    0 }}; 
 
 		private static class Node {
 			int x;

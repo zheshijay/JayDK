@@ -22,7 +22,7 @@ public class SearchInsertPosition {
 
 		int[] res = test.plusOne(nums);
 
-		ArrayUtil.printArray(res);
+//		ArrayUtil.printArray(res);
 	}
 
 }
