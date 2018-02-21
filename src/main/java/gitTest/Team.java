@@ -8,7 +8,7 @@ public class Team {
 	
 	String getName() {
 		
-		return "Team:" + name;
+		return "Team Name in Master Branch:" + name;
 	}
 	
 }
