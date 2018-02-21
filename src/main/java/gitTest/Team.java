@@ -4,11 +4,10 @@ public class Team {
 
 	String name;
 	String city;
-	String zipcode;
 	
 	String getName() {
 		
-		return "Team Name in Master Branch:" + name;
+		return "Team Name:" + name;
 	}
 	
 }
