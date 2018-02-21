@@ -2,7 +2,8 @@ package gitTest;
 
 public class Team {
 
-	String name;
+	String teamname;
 	String city;
+	String zipcode;
 	
 }
