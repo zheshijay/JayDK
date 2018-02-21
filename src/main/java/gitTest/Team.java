@@ -2,8 +2,13 @@ package gitTest;
 
 public class Team {
 
-	String teamname;
+	String name;
 	String city;
 	String zipcode;
+	
+	String getName() {
+		
+		return "Team:" + name;
+	}
 	
 }
