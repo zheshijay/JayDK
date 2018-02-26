@@ -12,9 +12,6 @@
 * Get JWT Token
 * Upload file
 
-### GDrive
-
-
 ### Google Drive API DEMO
 * Get connection
 * Get JWT Token
