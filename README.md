@@ -13,9 +13,8 @@
 * Upload file
 
 ### Google Drive API DEMO
-* Get connection
-* Get JWT Token
-* Upload file
+* Google cloud authentication 
+* Read files
 
 ### CRUD multimedia use Java
 * Image
