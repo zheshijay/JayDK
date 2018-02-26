@@ -8,6 +8,8 @@
 * Read file use SMB command
 
 ### Box SDK Demo
+* Get connection
+* Get JWT Token
 * Upload file
 
 
