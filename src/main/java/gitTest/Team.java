@@ -5,6 +5,7 @@ public class Team {
 	String name;
 	String city;
 	String county;
+	String zipcode;
 	
 	String getName() {
 		
