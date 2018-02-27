@@ -1,5 +1,6 @@
 package gitTest;
 
+//version 1.0 changes
 public class Team {
 
 	String name;
