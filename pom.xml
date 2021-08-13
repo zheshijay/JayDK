@@ -384,10 +384,6 @@
     <artifactId>openrtb-core</artifactId>
     <version>${openrtbVersion}</version>
 </dependency>
-		
-	
-
-
 
 	</dependencies>
 	<build>

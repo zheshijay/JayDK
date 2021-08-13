@@ -12,13 +12,12 @@ public class ReadPropertiesDEMO {
 		InputStream input = null;
 
 		try {
-			input = new FileInputStream("/Users/jay/app-config/jdbc.properties");
+			input = new FileInputStream("/Users/zshi/eclipse_workspace/JayDK/jaydk_master/JayDK/src/main/resources/config.properties");
 			// load a properties file
 			prop.load(input);
 
 			// get the property value and print it out
-			System.out.println(prop.getProperty("jdbc.mysql.fuelbid.username"));
-			System.out.println(prop.getProperty("jdbc.mysql.fuelbid.password"));
+			System.out.println(prop.getProperty("request.max.attempts"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
