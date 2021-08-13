@@ -19,8 +19,6 @@ public class LargestNumber {
 		});
 		System.out.println(Arrays.toString(arr));
 		
-		
-
 		StringBuilder sb = new StringBuilder();
 		for(String s: arr){
 			sb.append(s);
@@ -32,11 +30,17 @@ public class LargestNumber {
 
 		return sb.toString();
 	}
-	
+
+	/*
+	 * 
+输入：nums = [3,30,34,5,9]
+输出："9534330"
+	 */
 	public static void main(String[] args){
 		LargestNumber test = new LargestNumber();
 		
-		int[] a = new int[]{3, 30, 34, 5, 9};
+//		int[] a = new int[]{3, 30, 34, 5, 9};
+		int[] a = new int[]{30, 5, 3, 34, 9};
 		
 		System.out.println(test.largestNumber(a));
 		

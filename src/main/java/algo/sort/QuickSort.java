@@ -1,56 +1,51 @@
 package algo.sort;
 
-
 import java.util.Arrays;
 
 public class QuickSort {
-	public static void main(String[] args) {
-		int[] x = { 9, 2, 4, 7, 3, 7, 10 };
-		System.out.println(Arrays.toString(x));
- 
-		int low = 0;
-		int high = x.length - 1;
- 
-		quickSort(x, low, high);
-		System.out.println(Arrays.toString(x));
+
+	
+	private void sort(int[] a, int left, int right) {
+		if(left < right) {
+			int pivot = partition(a, left, right);
+			sort(a, left, pivot-1);
+			sort(a, pivot+1, right);
+		}
 	}
- 
-	public static void quickSort(int[] arr, int low, int high) {
-		if (arr == null || arr.length == 0)
-			return;
- 
-		if (low >= high)
-			return;
- 
-		// pick the pivot
-		int middle = low + (high - low) / 2;
-		int pivot = arr[middle];
- 
-		// make left < pivot and right > pivot
-		int i = low, j = high;
-		while (i <= j) {
-			while (arr[i] < pivot) {
-				i++;
-			}
- 
-			while (arr[j] > pivot) {
-				j--;
-			}
- 
-			if (i <= j) {
-				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-				i++;
-				j--;
+
+	
+	private int partition(int[] a, int left, int right) {
+		int pivot = a[right];
+		int idx = left;
+		for(int i=left; i<a.length; i++) {
+			if (a[i] < pivot) {
+				swap(a, i, idx);
+				idx++;
 			}
 		}
- 
-		// recursively sort two sub parts
-		if (low < j)
-			quickSort(arr, low, j);
- 
-		if (high > i)
-			quickSort(arr, i, high);
+		swap(a, right, idx);
+		return idx;
 	}
+
+
+	private void swap(int[] a, int i, int j) {
+		int temp = a[i];
+		a[i] = a[j];
+		a[j] = temp;
+	}
+
+
+	// Driver program
+	public static void main(String args[]) {
+		int a[] = { 10, 7, 8, 9, 1, 5 };
+		int n = a.length;
+
+		QuickSort test = new QuickSort();
+		test.sort(a, 0, n - 1);
+
+		System.out.println("sorted array:" + Arrays.toString(a));
+	}
+
+	
+
 }

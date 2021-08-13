@@ -13,55 +13,31 @@ Note:
 
  */
 public class SumString {
-	public static String sumString(String s1, String s2){
-		
-		char[] c1 = s1.toCharArray();
-		char[] c2 = s2.toCharArray();
-		
-
-		int carry = 0;
-		
-		int l1 = s1.length()-1, l2 = s2.length()-1;
-		
-		
-		StringBuilder sumStr = new StringBuilder();
-		
-		while( l1 >=0 || l2 >= 0 || carry == 1){
-
-			System.out.println("=================> l1- " + l1 + " - " + "l2- " + l2);
-			int int1 = ( l1>=0)? (c1[l1] - '0'):0;
-			
-			int int2 = ( l2>=0)? (c2[l2] - '0'):0;
-			
-			System.out.println("-----> int1- " + int1 + " - " + "int2- " + int2);
-			
-			int sum =  int1 + int2 + carry;
-			
-			carry = sum/10;
-			int val = sum % 10;
-
-			sumStr.insert(0, val);
-			System.out.println("carry is: " + carry);
-			System.out.println("sumStr is: " + sumStr);
-			
-			l1--; 
-			l2--;
-			
-			
-		}
-		
-		return sumStr.toString();
-		
-		
+	public static String sumString(String num1, String num2){
+		int i = num1.length() - 1, j = num2.length() - 1, add = 0;
+        StringBuffer ans = new StringBuffer();
+        while (i >= 0 || j >= 0 || add != 0) {
+            int x = i >= 0 ? num1.charAt(i) - '0' : 0;
+            int y = j >= 0 ? num2.charAt(j) - '0' : 0;
+            int result = x + y + add;
+            ans.append(result % 10);
+            add = result / 10;
+            i--;
+            j--;
+        }
+        
+        System.out.println("ans is:" + ans);
+        // 计算完以后的答案需要翻转过来
+        ans.reverse();
+        return ans.toString();
 	}
-	
-	
-	
+
 	public static void main(String args[]){
-		String s1 = "123";
-		String s2 = "957";
-		
-		System.out.println(SumString.sumString(s1, s2));
+//		String s1 = "123";
+//		String s2 = "957";
+//		
+//		System.out.println(SumString.sumString(s1, s2));
+		System.out.println(0/10);
 		
 	}
 	

@@ -3,19 +3,27 @@ package algo.string_and_array;
 public class PalindromePhase {
 	/*
 	 * Java method to check if number is palindrome or not
+	 * 
+	 * 1234321
+	 * 12345
+	 * 
 	 */
 	public static boolean isPalindrome(int number) {
 		if(number < 0) return false;
 
 		int palindrome = number; // copied number into variable
 		int reverse = 0;
+		
+		System.out.println("palindrome:" + palindrome);
 
 		while (palindrome != 0) {
-			int remainder = palindrome % 10;
-			reverse = reverse * 10 + remainder;
+			int last = palindrome % 10;
+			reverse = reverse * 10 + last;
 			palindrome = palindrome / 10;
 		}
 
+		System.out.println("reverse:" + reverse);
+		
 		// if original and reverse of number is equal means
 		// number is palindrome in Java
 		if (number == reverse) {
@@ -72,7 +80,6 @@ public class PalindromePhase {
 			if(!isvalid(phase.charAt(i)) ) {i++; continue;} 
 			if(!isvalid(phase.charAt(j)) ) {j--; continue;} 
 
-			
 			System.out.println("checking  " + phase.charAt(i) + " and " + phase.charAt(j));
 			
 			if(Character.toLowerCase(phase.charAt(i))  != Character.toLowerCase(phase.charAt(j))) return false;
@@ -96,7 +103,9 @@ public class PalindromePhase {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PalindromePhase pa = new PalindromePhase();
-		System.out.println(pa.isPalindromePhase("A man, a plan, a canal: Panama"));
+		System.out.println(pa.isPalindrome(12345));
+	
+		
 	}
 
 }

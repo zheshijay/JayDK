@@ -1,9 +1,9 @@
 package algo.string_and_array;
 
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map;
 
 /*
  * 
@@ -116,12 +116,49 @@ public class FindKDiffPairs {
 		    
 		    return count;
 		  }
+	 
+	 
+	 
+	 public int findPairs2(int[] nums, int k) {
+	        int count = 0 ;
+	        Map<Integer,Integer> map = new HashMap<>();
+	        if(k<0){
+	            return count ;
+	        }
+
+	        for(int i=0;i<nums.length;i++){
+	            map.putIfAbsent(nums[i],0) ;
+	            map.put(nums[i],map.get(nums[i])+1) ;
+	        }
+	
+	        for(int i:map.keySet()){
+	            if(k==0){
+	                if(map.get(i)>1){
+	                    count++ ;
+	                }
+	            }
+	            else if(k!=0){
+	                if(map.containsKey(i+k)){
+	                    count++ ;
+	                }
+	            }
+	        }
+	        return count ;
+	    }
+
+	 
+	 
+	 
+	 
+	 
 
 	public static void main(String args[]){
 		FindKDiffPairs test = new FindKDiffPairs();
 
 
-		int result = test.findPairs(new int[]{6,2,9,3,9,6,7,7,6,4}, 3);
+//		int result = test.myFindPairs(new int[]{6,2,9,3,9,6,7,7,6,4}, 3);
+		
+		int result = test.findPairs2(new int[]{1,3,1,5,4}, 0);
 
 		System.out.println(result);
 

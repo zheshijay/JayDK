@@ -3,142 +3,68 @@ package algo.string_and_array;
 import java.util.Arrays;
 
 /*
- * 
- * 
-Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and left the other as original.
+给定一个字符串 s 和一个整数 k，你需要对从字符串开头算起的每隔 2k 个字符的前 k 个字符进行反转。
 
-Example:
+如果剩余字符少于 k 个，则将剩余字符全部反转。
+如果剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符，其余字符保持原样。
+ 
 
-Input: s = "abcdefg", k = 2
-Output: "bacdfeg"
+示例:
 
-Restrictions:
+输入: s = "abcdefg", k = 2
+输出: "bacdfeg"
 
-    The string consists of lower English letters only.
-    Length of the given string and k will in the range [1, 10000]
-
- * 
  */
 public class ReverseStringEveryGivenK {
-
 
 	/*
 	 * Reverse every K diff
 	 * 
-Input:  [a, b, c, d, e, f, g]
-Output: [b, a, d, c, f, e, g]
+	 * Input: [a, b, c, d, e, f, g] Output: [b, a, d, c, f, e, g]
 	 * 
 	 * 
 	 */
 	public String reverseStr(String s, int k) {
-		char[] arr = s.toCharArray();
-		int len = arr.length;
-		int start = 0;
-		while(start < len) {
-
-			System.out.println(" start is:  " + start );
-			int j = Math.min(start + k - 1, len - 1);
-
-			System.out.println(" swap " + start + " and " + j);
-			swap1(arr, start, j);
-			start += 2 * k;
+		char[] a = s.toCharArray();
+		for (int start = 0; start < a.length; start += 2 * k) {
+			int i = start, j = Math.min(start + k - 1, a.length - 1);
+			while (i < j) {
+				char tmp = a[i];
+				a[i++] = a[j];
+				a[j--] = tmp;
+			}
 		}
-		return String.valueOf(arr);
+		return new String(a);
 	}
 
-
-	public String reverseStr1(String s, int k) {
-		char[] arr = s.toCharArray();
-		int len = arr.length;
-		int startIndex = 0;
-		int endIndex = startIndex + k -1;
-
-
-		while(endIndex < len) {
-
-			System.out.println(" start is:  " + startIndex );
-			//			int j = Math.min(start + k - 1, len - 1);
-
-			System.out.println(" swap- start " + startIndex + " end " + (endIndex) );
-
-			swap2(arr, startIndex, endIndex);
-			startIndex += 2 * k;
-			endIndex = startIndex + k -1;
+// 2 pointers
+	public String reverseStr2(String s, int k) {
+		char[] ch = s.toCharArray();
+		int n = ch.length;
+		// 每2k个元素为一组进行反转
+		for (int i = 0; i < n; i += 2 * k) {
+			int left = i;
+			int right = (i + k - 1 < n) ? i + k - 1 : n - 1; // 判断下标是否越界
+			while (left <= right) {
+				char temp = ch[left];
+				ch[left] = ch[right];
+				ch[right] = temp;
+				left++;
+				right--;
+			}
 		}
-		return String.valueOf(arr);
+		String str = new String(ch);
+		return str;
+
 	}
 
-
-	private void swap1(char[] arr, int l, int r) {
-		while (l < r) {
-			char temp = arr[l];
-			arr[l++] = arr[r];
-			arr[r--] = temp;
-		}
-	}
-
-
-	//---------------
-
-
-	/*
-	 * Reverse every K group
-	 * 
-Input:  [a, b, c, d, e, f, g]
-Output: [b, a, d, c, f, e, g]
-	 * 
-	 * 
-	 */
-	public String reverseStringEveryK(String str, int k){
-
-		char[] chars = str.toCharArray();
-
-		int len = str.length();
-
-		int startIndex = 0;
-		int endIndex = startIndex + k -1;
-
-		while(endIndex < len){
-			System.out.println(" swap- start " + startIndex + " end " + (endIndex) );
-
-			swap2(chars, startIndex, endIndex);
-
-			System.out.println(" after swap: " + Arrays.toString(chars));
-			System.out.println("----------> next startIndex : " + startIndex);
-			
-			startIndex = startIndex + k;
-			endIndex = startIndex + k -1;
-		}
-
-		return Arrays.toString(chars);
-	}
-
-	public void swap2(char[] chars, int startIndex, int endIndex){
-
-		while(startIndex < endIndex){
-			char tmp = chars[startIndex];
-			chars[startIndex] = chars[endIndex];
-			chars[endIndex] = tmp;
-			startIndex++;
-			endIndex--;
-		}
-	}
-
-	/*
-Input: s = "abcdefg", k = 2
-Output: "bacdfeg"
-	 * 
-	 */
-
-
-	public static void main(String args[]){
+	public static void main(String args[]) {
 		ReverseStringEveryGivenK test = new ReverseStringEveryGivenK();
 
 		String str = "abcdefg";
-		String reversed = test.reverseStringEveryK(str ,2);
+		String reversed = test.reverseStr(str, 2);
 
-		System.out.println("reversed: "+ reversed);
-
+		System.out.println("reversed: " + reversed);
 
 	}
 }

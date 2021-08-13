@@ -4,73 +4,54 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SubarraySumEqualsK {
-	/*
-Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+/*
+给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。
 
-Example 1:
-Input:nums = [1,1,1], k = 2
-Output: 2
-Note:
-The length of the array is in range [1, 20,000].
-The range of numbers in the array is [-1000, 1000] and the range of the integer k is [-1e7, 1e7].
-	 */
+示例 1 :
 
-	public int subarraySum(int[] a, int k) {
-		int sum = 0;
-		HashMap<Integer, Integer> map = new HashMap<>();
-		map.put(0, 1);
-		int count = 0;
-		for (int i = 0; i < a.length; i++) {
-			sum += a[i];
-			
-			System.out.println("sum: " + sum);
-			
-			if (map.containsKey(sum - k)) {
-				System.out.println("found sum-" + sum + " -k " + k);
-				count += map.get(sum-k);
-			}
-			if (!map.containsKey(sum)) {
-				System.out.println("-------------> adding:" + sum);
-				map.put(sum, 1);
-			} else {
-				map.put(sum, map.get(sum) + 1);
-			}
-		}
-		return count;
-	}
+输入:nums = [1,1,1], k = 2
+输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。
+说明 :
 
-	public int mySubarraySum(int[] nums, int k) {
-		
-		int count=0;
-		Map<Integer, Integer> map = new HashMap<>();
-		
-		
-		for (int i = 0; i < nums.length; i++) {
-			
-			if(!map.containsKey(nums[i])){
-				map.put(k-nums[i], i);
-			}else{
-				
-				int anotherIndex = map.get(nums[i]);
-				if(Math.abs(anotherIndex - i) == 1){
-					System.out.println("anotherIndex: " + anotherIndex + " - i: " + i);
-					count++;
-				}
-				
-				map.remove(nums[i]);
-				map.put(k-nums[i], i);
-				
-			}
-		}
-		return count;
-	}
+数组的长度为 [1, 20,000]。
+数组中元素的范围是 [-1000, 1000] ，且整数 k 的范围是 [-1e7, 1e7]。
+
+ */
+	 public int subarraySum(int[] nums, int k) {
+	        int count = 0;
+	        for (int start = 0; start < nums.length; ++start) {
+	            int sum = 0;
+	            for (int end = start; end >= 0; --end) {
+	                sum += nums[end];
+	                if (sum == k) {
+	                    count++;
+	                }
+	            }
+	        }
+	        return count;
+	    }
+
+	 public int subarraySum2(int[] nums, int k) {
+	        int count = 0, pre = 0;
+	        HashMap < Integer, Integer > mp = new HashMap < > ();
+	        mp.put(0, 1);
+	        for (int i = 0; i < nums.length; i++) {
+	            pre += nums[i];
+	            if (mp.containsKey(pre - k)) {
+	                count += mp.get(pre - k);
+	            }
+	            mp.put(pre, mp.getOrDefault(pre, 0) + 1);
+	        }
+	        return count;
+	    }
+
 	public static void main(String[] args) {
 		SubarraySumEqualsK test = new SubarraySumEqualsK();
-		int[] nums = new int[]{5, 1,2};
+		int[] nums = new int[]{1,2,3,4};
 		
 //		int[] nums = new int[]{1,2,3,4,5,6,1};
 
-		System.out.println(test.subarraySum(nums, 3));
+		System.out.println(test.subarraySum(nums, 5));
 	}
 	
 	

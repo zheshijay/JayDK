@@ -38,10 +38,7 @@ use 2 for loop:
  first loop: mark appeared index to negitive value
  secibd loop: find the indices which has postive value 
 
-
 My solution: I think it is the best
-
-
 
  * 
  */

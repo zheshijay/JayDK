@@ -67,7 +67,7 @@ public class PlusK {
 	public static void main(String[] args){
 		PlusK test = new PlusK();
 		
-		int[] nums = new int[]{9,2,9};
+		int[] nums = new int[]{9,9,9};
 
 		int[] res = test.plusK(nums, 1);
 		

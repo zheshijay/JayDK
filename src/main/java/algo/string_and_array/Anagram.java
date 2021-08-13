@@ -1,9 +1,5 @@
 package algo.string_and_array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Anagram {
 
     /**
@@ -45,16 +41,42 @@ public class Anagram {
     	
     	//iterate s2, return false if new character found
     	for( int j=0; j<s2.length(); j++){
-    		if(!appeard[s1.charAt(j)]) return false;
-    		
+    		if(!appeard[s2.charAt(j)]) return false;
     	}
     	return true;
     }
+    
+    public boolean isAnagram2(String s, String t) {
+        if(s.length() != t.length())
+            return false;
+        int[] alpha = new int[26];
+        for(int i = 0; i< s.length(); i++) {
+            alpha[s.charAt(i) - 'a'] ++;
+            alpha[t.charAt(i) - 'a'] --;
+        }
+        for(int i=0;i<26;i++)
+            if(alpha[i] != 0)
+                return false;
+        return true;
+    }
 
+
+
+    
 	public static void main(String[] args)
 	{
+//		String s1 = "abcde";
+//
+//		int[] appeard = new int[256];
+//		
+//		
+//		appeard['a'] = 1;
 		
-		System.out.println( myAnagram("abcde", "edcab") );
+		
+		
+//		System.out.println((int) 'a');
+		System.out.println( myAnagram("aacc", "acac") );
+//		System.out.println( myAnagram("abcde", "edcba") );
 //		cba
 //		bab
 //		aba

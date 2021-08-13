@@ -53,17 +53,6 @@ public class ArrayBinarySearch {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
 	public static void main(String args[]){
 
 		ArrayBinarySearch test = new ArrayBinarySearch();

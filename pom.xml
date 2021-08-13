@@ -385,64 +385,7 @@
     <version>${openrtbVersion}</version>
 </dependency>
 		
-		
-		<!-- Bidder -->
- <dependency>
-            <groupId>com.google.openbidder</groupId>
-            <artifactId>open-bidder-api</artifactId>
-            <version>${openBidderVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.openbidder</groupId>
-            <artifactId>open-bidder-config</artifactId>
-           <version>${openBidderVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.openbidder</groupId>
-            <artifactId>open-bidder-exchange-doubleclick</artifactId>
-            <version>${openBidderVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.openbidder</groupId>
-            <artifactId>open-bidder-bid</artifactId>
-            <version>${openBidderVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.openbidder</groupId>
-            <artifactId>open-bidder-http</artifactId>
-            <version>${openBidderVersion}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.openbidder</groupId>
-            <artifactId>open-bidder-server</artifactId>
-            <version>${openBidderVersion}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.openbidder</groupId>
-            <artifactId>open-bidder-exchange-doubleclick</artifactId>
-            <version>${openBidderVersion}</version>
-            <type>test-jar</type>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.openbidder</groupId>
-            <artifactId>open-bidder-api</artifactId>
-            <version>${openBidderVersion}</version>
-            <type>test-jar</type>
-            <scope>test</scope>
-        </dependency>
-        
-        
-        <!-- Double CLick -->
-        <!-- https://mvnrepository.com/artifact/com.google.doubleclick/doubleclick-core -->
-<dependency>
-    <groupId>com.google.doubleclick</groupId>
-    <artifactId>doubleclick-core</artifactId>
-    <version>0.8.1</version>
-</dependency>
-        
+	
 
 
 

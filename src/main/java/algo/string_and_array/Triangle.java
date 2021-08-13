@@ -1,6 +1,8 @@
 package algo.string_and_array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
  * 
@@ -24,7 +26,7 @@ Note: Bonus point if you are able to do this using only O(n) extra space, where 
  * 
  */
 public class Triangle {
-	public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
+	public static int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
 		int[] total = new int[triangle.size()];
 		int l = triangle.size() - 1;
 
@@ -36,10 +38,23 @@ public class Triangle {
 		for (int i = triangle.size() - 2; i >= 0; i--) {
 			for (int j = 0; j < triangle.get(i + 1).size() - 1; j++) {
 				total[j] = triangle.get(i).get(j) + Math.min(total[j], total[j + 1]);
+				System.out.println("total["+j+"] is " + total[j]);
 			}
 		}
 
 		return total[0];
+	}
+	
+	public static void main(String[] args) {
+		ArrayList<ArrayList<Integer>> triangle = new ArrayList<>();
+		triangle.add(new ArrayList<>(Arrays.asList(2)));
+		triangle.add(new ArrayList<>(Arrays.asList(3,4)));
+		triangle.add(new ArrayList<>(Arrays.asList(6,5,7)));
+		triangle.add(new ArrayList<>(Arrays.asList(4,1,8,3)));
+		System.out.println("triangle:" + triangle);
+		
+		System.out.println("res:" + Triangle.minimumTotal(triangle));
+		
 	}
 
 }

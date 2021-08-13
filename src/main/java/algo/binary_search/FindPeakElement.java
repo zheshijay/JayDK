@@ -6,27 +6,27 @@ package algo.binary_search;
  * 
  */
 public class FindPeakElement {
-	public int findPeakElement(int[] nums){
-		if(nums.length ==0) return -1;
-		int start = 0, end = nums.length-1;
-		while(start+1<end){
-			int mid = (start+end)/2;
-			
-			//condition 1: current element is peak
-			if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]){
-				return nums[mid];
-			}else if(nums[mid] > nums[mid-1] && nums[mid] < nums[mid+1]){
-				start=mid;
-			}else if(nums[mid] < nums[mid-1] && nums[mid] > nums[mid+1]){
-				end = mid;
-			}else if(nums[mid] > nums[mid-1] && nums[mid] < nums[mid+1]){
-				start=mid;
-			}
-		}
-		if(start >=1 && ( nums[start]>nums[start-1] && nums[start] <nums[start+1]) ) return nums[start];
-		if(end <=nums.length-2 && ( nums[end]>nums[end-1] && nums[end] < nums[end+1]) ) return nums[end];
-		return -1;
-	}
+	public int findPeakElement(int[] nums) {
+        int l = 0, r = nums.length - 1;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (nums[mid] > nums[mid + 1])
+                r = mid;
+            else
+                l = mid + 1;
+        }
+        return l;
+    }
+	
+	
+	public int findPeakElement2(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] > nums[i + 1])
+                return i;
+        }
+        return nums.length - 1;
+    }
+
 	
 	public static void main(String[] args){
 		FindPeakElement test = new FindPeakElement();

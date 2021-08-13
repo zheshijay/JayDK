@@ -8,7 +8,7 @@ import java.util.Set;
 public class FindAllDupInArray {
 
 	/*
-Given an array of integers, 1 â‰? a[i] â‰? n (n = size of array), some elements appear twice and others appear once.
+Given an array of integers, 1 ï¿½? a[i] ï¿½? n (n = size of array), some elements appear twice and others appear once.
 
 Find all the elements that appear twice in this array.
 
@@ -39,14 +39,16 @@ Output:
 		return dup;
 	}
 
-
 	// when find a number i, flip the number at position i-1 to negative. 
 	// if the number at position i-1 is already negative, i is the number that occurs twice.
 	public List<Integer> findDuplicatesWithSet(int[] nums) {
 		List<Integer> res = new ArrayList<>();
+		
 		for (int i = 0; i < nums.length; ++i) {
 			
 			int index = Math.abs(nums[i])-1;
+			
+			System.out.println("index:" + index);
 			
 			if (nums[index] < 0)
 				res.add(Math.abs(index+1));
@@ -61,7 +63,7 @@ Output:
 
 		int[] nums1 = new int[]{4,3,2,7,8,2,3,1};
 
-		System.out.println(test.findDuplicates(nums1));
+		System.out.println(test.findDuplicatesWithSet(nums1));
 
 	}
 }

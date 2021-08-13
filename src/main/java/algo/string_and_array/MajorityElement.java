@@ -1,6 +1,5 @@
 package algo.string_and_array;
 
-
 /**
  * 
  * 
@@ -15,7 +14,7 @@ Write a function which takes an array and emits the majority element (if it exis
        O/P : NONE
  * 
  * @author ZShi
- *
+ * 
  */
 public class MajorityElement {
 	 public int majorityElement(int[] num) {
@@ -38,7 +37,7 @@ public class MajorityElement {
 	 
 	 public static void main(String[] args) {
 		 MajorityElement test = new MajorityElement();
-		 System.out.println(test.majorityElement(new int[]{1,1,2,2,2,1,1,1}));
+		 System.out.println(test.majorityElement(new int[]{1,2,3,4,5}));
 //		 System.out.println(test.majorityElement(new int[]{1,2,3}));
 		 
 		 

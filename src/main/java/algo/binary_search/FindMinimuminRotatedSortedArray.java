@@ -12,10 +12,7 @@ Find the minimum element.
 
  */
 public class FindMinimuminRotatedSortedArray {
-
-
-
-
+ 
 	// start: 9:35 ~ 9:50
 
 	//solution:  find the first element smaller than nums[nums.length-1]
@@ -32,7 +29,6 @@ public class FindMinimuminRotatedSortedArray {
 			else start=mid;
 		}
 
-		
 		System.out.println("start:" + start + " end:" + end);
 		
 		if(nums[start] <=target){

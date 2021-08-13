@@ -5,22 +5,25 @@ import java.util.Arrays;
 import java.util.List;
 
 /*
- * 
- * 
-Problem:
+给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
 
-Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? 
-Find all unique triplets in the array which gives the sum of zero.
+注意：答案中不可以包含重复的三元组。
 
-Note:
-Elements in a triplet (a,b,c) must be in non-descending order. (ie, a �� b �� c)
-The solution set must not contain duplicate triplets.
+ 
 
-    For example, given array S = {-1 0 1 2 -1 -4},
+示例：
 
-    A solution set is:
-    (-1, 0, 1)
-    (-1, -1, 2)
+给定数组 nums = [-1, 0, 1, 2, -1, -4]，
+
+满足要求的三元组集合为：
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/3sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
 public class ThreeSum {
@@ -35,57 +38,39 @@ public class ThreeSum {
 	 * (2) Use 2 pointer, check target with nums[left] + nums[right]
 	 * 
 	 */
-	 public List<List<Integer>> myThreeSum(int[] nums) {
-		 Arrays.sort(nums);
-		 List<List<Integer>> res = new ArrayList<List<Integer>>();
-		 for(int i=0; i < nums.length; i++){
-			 
-			 int curNum = nums[i];
-			 
-			 //avoid duplicate
-			 if(i>0 && curNum == nums[i-1]) continue;
-			 
-			 int target = -curNum;
-			 
-			 
-			 int leftP = i+1, rightP = nums.length-1;
-			 
-			 while(leftP < rightP){
-				 
-				 if( (target > nums[leftP] + nums[rightP])) 
-					 leftP++; 
-				 else if( target < nums[leftP] + nums[rightP] ) 
-					 rightP--;
-				 else{
-					 //found it
-					 List<Integer> indice = new ArrayList<Integer>();
-					 indice.add(nums[i]);
-					 indice.add(nums[leftP]);
-					 indice.add(nums[rightP]);
-					 res.add(indice);
-					
-					 leftP++;
-					 rightP--;
-					 
-					 //avoid duplicate
-					 while(leftP < rightP && nums[leftP] == nums[leftP-1]) leftP++;
-					 while(leftP < rightP && nums[rightP] == nums[rightP+1]) rightP--;
-					 
+	public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> ans = new ArrayList();
+        int len = nums.length;
+        if(nums == null || len < 3) return ans;
+        Arrays.sort(nums); // 排序
+        for (int i = 0; i < len ; i++) {
+            if(nums[i] > 0) break; // 如果当前数字大于0，则三数之和一定大于0，所以结束循环
+            if(i > 0 && nums[i] == nums[i-1]) continue; // 去重
+            int L = i+1;
+            int R = len-1;
+            while(L < R){
+                int sum = nums[i] + nums[L] + nums[R];
+                if(sum == 0){
+                    ans.add(Arrays.asList(nums[i],nums[L],nums[R]));
+                    while (L<R && nums[L] == nums[L+1]) L++; // 去重
+                    L++;
 
-					 
-					 
-					 
-					 // -3, -3, -2, -1, 0, 1, 2, 2, 3, 3
-				 }
-			 }
-			 
-		 }
-		 return res;
-	 }
-	
+                    while (L<R && nums[R] == nums[R-1]) R--; // 去重
+                    R--;
+                } else if (sum < 0) {
+                	L++;
+                }else if (sum > 0) {
+                	R--;
+                }
+            }
+        }        
+        return ans;
+    }
+
+
 	public static void main(String args[]){
 		ThreeSum threeSum = new ThreeSum();
-		List<List<Integer>> res = threeSum.myThreeSum(new int[]{-2, -2, -1, 0, 1, 2, 2, 2, 3 });
+		List<List<Integer>> res = threeSum.threeSum(new int[]{-2, -2, -1, 0, 1, 2, 2, 2, 3 });
 			
 		System.out.println(res);
 

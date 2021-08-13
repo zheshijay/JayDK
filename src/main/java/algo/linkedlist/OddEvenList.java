@@ -42,7 +42,7 @@ public class OddEvenList {
 	    
 	    ListNode p1 = head;
 	    ListNode p2 = head.next;
-	    ListNode connectNode = head.next;
+	    ListNode headOfEvenNode = head.next;
 	 
 	    while(p1.next != null && p2.next != null){
 //	            ListNode t = p2.next;
@@ -56,7 +56,8 @@ public class OddEvenList {
 	            p2 = p2.next;
 	    }
 	 
-	    p1.next = connectNode;
+	    System.out.println("p1:" + p1.val + " | p2:" + p2.val + " | headOfEvenNode:" + headOfEvenNode.val);
+	    p1.next = headOfEvenNode;
 	 
 	    return result;
 	}

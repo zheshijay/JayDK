@@ -13,9 +13,8 @@ For example, given [1,2,3,4], return [24,12,8,6].
 		
 
 	public static int[] myProductExceptSelf5(int[] nums) {
-		
+
 		int[] res =  new int[nums.length];
-		
 		int[] left = new int[nums.length];
 		int[] right = new int[nums.length];
 		

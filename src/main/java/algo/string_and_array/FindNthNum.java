@@ -145,7 +145,7 @@ For input 12345, we have 9+180+2700<12345<9+180+2700+36000, so the corresponding
 	public static void main(String args[]){
 		FindNthNum test = new FindNthNum();
 
-		System.out.println(test.findNthDigit(21));
+		System.out.println(test.findNthDigit(15));
 
 
 	} 

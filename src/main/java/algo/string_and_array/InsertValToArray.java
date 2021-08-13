@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 public class InsertValToArray {
 
-
-
 	public void swap( ){
 
 	}
@@ -27,21 +25,18 @@ public class InsertValToArray {
 	}
 
 
-	public static int [] insertArray (int inputArray[], int index, int value){
-		for(int i=0; i< inputArray.length-1; i++) {
-
-			if (i == index){
-
-				for (int j = inputArray.length-1; j >= index; j-- ){
-					inputArray[j]= inputArray[j-1];
-				}
-
-				inputArray[index]=value;
-			}
-
-		}
-		return inputArray;
-	}
+	 public int searchInsert(int[] nums, int target) {
+	       if (target > nums[nums.length-1]) {
+	           return nums.length;
+	       }
+	       
+	       for (int i =0; i< nums.length; i++) {
+	           if (target <= nums[i]) {
+	               return i;
+	           }
+	       }
+	       return -1;
+	    }
 
 	public int[] insert(int[] nums, int target){
 		//new array
@@ -76,6 +71,22 @@ public class InsertValToArray {
 
 		return res;
 	}
+	
+	  public int searchInsert2(int[] nums, int target) {
+	        int n = nums.length;
+	        int left = 0, right = n - 1, ans = n;
+	        while (left <= right) {
+	            int mid = ((right - left) >> 1) + left;
+	            if (target <= nums[mid]) {
+	                ans = mid;
+	                right = mid - 1;
+	            } else {
+	                left = mid + 1;
+	            }
+	        }
+	        return ans;
+	    }
+
 
 	public static void main(String[] args) {
 

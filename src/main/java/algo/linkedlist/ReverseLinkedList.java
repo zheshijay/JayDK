@@ -48,76 +48,6 @@ public class ReverseLinkedList {
 	}
 
 
-	/**
-	 * 
-	 * 
-	 * 1 2 3 4 5 6 7 8 9
-	 */
-
-	/* Function to reverse the linked list */
-	Node reverse(Node head) {
-
-		Node before = null;
-		Node tmp = head;
-
-		while (tmp != null) {
-			Node next = tmp.next;
-
-			tmp.next = before;
-
-			before = tmp;
-
-			tmp = next;
-
-			this.printList(before);
-		}
-		head = before;
-
-		return head;
-	}
-
-
-	Node myrReverse(Node head) {
-
-		Node reversed = null;
-		Node pointer = head;
-
-		while(pointer!=null){
-			Node nextNode = pointer.next;   //get nextNode first, because we want to lost the connect point of next one
-
-			pointer.next = reversed;   //pointer (current node) link to previous reversed node
-			reversed = pointer;         // move reversed to point to the new reversed linkedlist head
-			pointer = nextNode;         // move to next.
-		}
-		head = reversed;
-
-		return head;
-	}
-
-	public void printList(Node Node ){
-
-		//		System.out.print("printList: " + Node.val);
-		System.out.println();
-		while(Node!=null){
-			System.out.print(Node.val);
-			Node = Node.next;
-		}
-	}
-
-	
-	Node myReverse2(Node head) {
-		Node pre = null, cur = head, next = null;
-		while(cur!=null){
-			next = cur.next;  //save the address of next node
-			cur.next = pre; //.point cur to pre
-			pre = cur;   //move pre to cur node
-			cur = next;   //move on to next round
-		}
-		return pre;
-	}
-
-	
-	
 	
 	public Node myReverseLinkedList(Node head) {
 		Node pre=null, cur=head, nextNode=null;
@@ -129,6 +59,35 @@ public class ReverseLinkedList {
 	    }
 	    return pre;
 	}
+	
+	 Node reverse(Node head, int k) 
+	    { 
+	       Node current = head; 
+	       Node next = null; 
+	       Node prev = null; 
+	         
+	       int count = 0; 
+	  
+	       /* Reverse first k nodes of linked list */
+	       while (count < k && current != null)  
+	       { 
+	           next = current.next; 
+	           current.next = prev; 
+	           prev = current; 
+	           current = next; 
+	           count++; 
+	       } 
+	  
+	       /* next is now a pointer to (k+1)th node  
+	          Recursively call for the list starting from current. 
+	          And make rest of the list as next of first node */
+	       if (next != null)  
+	          head.next = reverse(next, k); 
+	  
+	       // prev is now head of input list 
+	       return prev; 
+	    }      
+	
 	
 	
 	public static void main(String[] args){

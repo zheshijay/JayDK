@@ -7,60 +7,42 @@ package algo.string_and_array;
  * 
  */
 public class MedianofTwoSortedArrays {
-	public int findMidOfTwoSortedArray(int[] nums1, int[] nums2){
-		int l1=nums1.length, l2=nums2.length;
-		int p1=0, p2=0;
-
-		int targetIndex = ( l1 + l2 ) / 2;  
-		int indexCounter = 0;
-
-		System.out.println("targetIndex: "+targetIndex);
-
-		while(p1 < l1 && p2<l2){
-			System.out.println("indexCounter: "+ indexCounter);
-			System.out.println("p1:" + p1 + " - p2:" + p2);
-			System.out.println("nums1[p1]:" + nums1[p1] + " -  nums2[p2]:" + nums2[p2]);
-
-			if(nums1[p1] < nums2[p2]){ 
-				p1++; 
-				if(indexCounter == targetIndex) return nums1[p1]; 
-				indexCounter++; 
-			}else{ 
-				p2++; 
-				if(indexCounter == targetIndex) return nums2[p2]; 
-				indexCounter++; }
-		}
-
-		while(p1<l1){ 
-
-			if(indexCounter == targetIndex) return nums1[p1]; 
-			p1++; 
-			indexCounter++; 
-		}
-
-		while(p2<l2){ 
-			System.out.println("rest of p2 - indexCounter: "+ indexCounter ); 
-			if(indexCounter == targetIndex) return nums2[p2]; 
-			p2++; 
-			indexCounter++; 
+	public double findMidOfTwoSortedArray(int[] nums1, int[] nums2) {
+		 int a[]=new int[nums1.length+nums2.length];
+		 int lindex=0,rindex=0;
+		 int index=0;
+		 while (lindex<nums1.length&&rindex<nums2.length) {
+			if(nums1[lindex]<nums2[rindex])
+			{
+				a[index++]=nums1[lindex++];
 			}
-
-		return -1;
+			else {
+				a[index++]=nums2[rindex++];
+			}
+		}
+		 while (lindex<nums1.length) {
+				a[index++]=nums1[lindex++];
+		}
+		 while (rindex<nums2.length) {
+				a[index++]=nums2[rindex++];
+		}
+		 if(a.length%2==0)
+			 return (double)(a[a.length/2-1]+a[a.length/2])/2;
+		 else {
+			return a[a.length/2];
+		}
 
 	}
 
-	public static void main(String args[]){
+	public static void main(String args[]) {
 		MedianofTwoSortedArrays test = new MedianofTwoSortedArrays();
 
-		int[] nums1 = new int[]{1,2,3};
-		int[] nums2 = new int[]{0,9};
+		int[] nums1 = new int[] { 1, 2 };
+		int[] nums2 = new int[] { 3, 4 };
 
-		int mid = test.findMidOfTwoSortedArray(nums1, nums2);
+		double mid = test.findMidOfTwoSortedArray(nums1, nums2);
 		System.out.println("mid: " + mid);
 
 	}
-
-
-
 
 }

@@ -1,59 +1,67 @@
 package algo.dp;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Fibonacci {
+	
 
-	//Regular
-	public Long getFibonacci(int n){
-		if(n < 3) return 1L;  //base case
-		return getFibonacci(n-2) + getFibonacci(n-1);  //recursion
+	// Function to print N Fibonacci Number
+	static void Fibonacci(int N) {
+		int num1 = 0, num2 = 1;
+
+		int counter = 0;
+
+		// Iterate till counter is N
+		while (counter < N) {
+
+			// Print the number
+			System.out.print(num1 + " ");
+
+			// Swap
+			int num3 = num2 + num1;
+			num1 = num2;
+			num2 = num3;
+			counter = counter + 1;
+		}
 	}
 
+	// Function to print the fibonacci series
+	static int fib(int n) {
+		// Base Case
+		if (n <= 1)
+			return n;
 
-	public Long runFibnacciUseDP(int n){
-		Map<Integer, Long> map = new HashMap<>();
-		map.put(1, 1L);
-		map.put(2, 1L);
-
-		return DPfibonacci(map, n);
-
+		// Recursive call
+		return fib(n - 1) + fib(n - 2);
 	}
 
-	public Long DPfibonacci(Map<Integer, Long> map, int n){
-		if(n < 3) return 1L;
+	
+	// Function to find the fibonacci Series
+		static int fibDp(int n) {
+			if (n<1) return 0;
+			
+			 int[] dp = new int[n+1];
+		        dp[0] = 0;
+		        dp[1] = 1;
 
-		if(map.containsKey(n)) return map.get(n);
-		else{
-			Long fibN = DPfibonacci(map, n-1) + DPfibonacci(map, n-2);
-			map.put(n, fibN);
+		        for (int i = 2; i <= n; i++) {
+		            dp[i] = dp[i-1] + dp[i-2];
+		        }
+		        
+		        return dp[n];
 		}
 
-		return map.get(n);
-	}
-
-
-	public int fibDP(int n) {
-		int fib[] = new int[n + 1];
-		fib[0] = 0;
-		fib[1] = 1;
-		for (int i = 2; i < n + 1; i++) {
-			fib[i] = fib[i - 1] + fib[i - 2];
-		}
-		return fib[n];
-	}
-
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		Fibonacci test = new Fibonacci();
 
 		System.out.println("DP fibnacci:");
-		System.out.println(test.runFibnacciUseDP(50));
+		System.out.println(test.fibDp(45));
 
-		System.out.println("Regular fibnacci:");
-		System.out.println(test.getFibonacci(50));
+//		System.out.println("Regular fibnacci:");
+//		System.out.println(test.getFibonacci(45));
 	}
-
 
 }

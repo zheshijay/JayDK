@@ -45,6 +45,12 @@ The result can be in any order.
 //		return intersection.toArray(new Integer[intersection.size()]);
 	}
 
+	// 2 pointers solution
+	public int[] intersection2(int[] nums1, int[] nums2) {
+		return null;
+	}
+	
+
 
 	public static void main(String args[]){
 		ArrayIntersection test = new ArrayIntersection();

@@ -2,8 +2,6 @@ package algo.string_and_array;
 
 import java.util.Arrays;
 
-import javax.xml.stream.events.Characters;
-
 public class FindArrayDiff {
 	/*
 	 * 
@@ -42,11 +40,9 @@ Explanation:
 		return '0';
 	}
 
-
-
 	public static void main(String[] args){
 		FindArrayDiff test = new FindArrayDiff();
 
-		System.out.println(test.findTheDifference("abcd", "abecd"));
+		System.out.println(test.findTheDifference("abcd", "ambcd"));
 	}
 }
